@@ -1,3 +1,4 @@
+
 <div id="liste_tickets">
     <h2>Tickets en cours</h2>
     <?php
@@ -18,26 +19,16 @@
         echo "<ul>";
         echo "<li><img src='./images/en_cours.png' width='30px' height='30px'/></li>";
         echo "<li>".$bug->getCreated()->format('d.m.Y')."</li>";
-        echo "<li> affecté à : </li>";
-        ?>
-        <select id="lst" name="lst">
-            <?php
-            foreach($the_techs as $tech){
-                echo '<option value="'.$tech->getId().'">'.$tech->getName().'</option>';
-            }
-            ?>
-        </select>
-        <?php
-        //echo "<li> affecté à : ".$engineer."</li>";
+        echo "<li> affecté à : ".$engineer."</li>";
         echo "<li> Produit(s) : ";
         foreach ($bug->getProducts() as $product) {
             echo "- ".$product->getName()." ";
         }
         echo "</li>";
         echo "<li>".$bug->getDescription()."</li>";
-        echo '<input type="submit" name="attribuer" value="Attribuer" >';
         echo "</ul>";
     }
     ?>
-    </div>
+</div>
+
 </div>

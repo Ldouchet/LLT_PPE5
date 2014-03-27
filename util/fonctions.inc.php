@@ -55,6 +55,7 @@ function estConnecter(){
  */
 function seDeconnecter(){
    unset($_SESSION['login']);
+   unset($_SESSION['fonction']);
     echo'Vous avez été déconnecté';
 }
 
@@ -74,7 +75,6 @@ function authentifierUser($l,$m){
     $query = $entityManager->createQuery($dql);
     $query->setMaxResults(1);
     $users = $query->getResult();
-
     if (count($users) > 0){
         $leClub = null;
         if ($users[0]->getLeClub() != null){
@@ -110,6 +110,16 @@ function getAllBug(){
     $BugRepository = $entityManager->getRepository('Bug');
     $Bugs = $BugRepository->findAll();
     return $Bugs;
+}
+
+function getAllTech(){
+    require "bootstrap.php";
+
+    $dql = "SELECT u FROM User u WHERE u.fonction = 'Technicien'";
+
+    $query = $entityManager->createQuery($dql);
+    $Techs = $query->getResult();
+    return $Techs;
 }
 
 function getAllProducts(){
@@ -148,5 +158,20 @@ function ajouterNewBug(){
     $entityManager->flush();
 
     return "Le bug a été créé.";
+}
+
+function repareBug(){
+    $obj = $_POST['objet'];
+    $cr = $_POST['compte'];
+
+    require "bootstrap.php";        //faire un update pour passer le statut de open a close
+
+
+    $dql = "UPDATE Bug SET status = 'CLOSE' WHERE status = 'OPEN'";
+
+    $query = $entityManager->createQuery($dql);
+    $repare = $query->getResult();
+
+    return "Le bug a bien été réparée.";
 }
 ?>

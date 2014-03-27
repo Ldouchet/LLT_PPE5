@@ -15,16 +15,8 @@ else
 switch($action){
     case 'list':{
         $the_bugs = getAllBug();
+        $the_techs = getAllTech();
         include("vues/v_dashboard_resp.php");
-        break;
-    }
-    case 'nouveau':{
-        if (isset($_POST['objet'])){
-            $message = ajouterNewBug();
-            include("vues/v_message.php");
-        }
-        $the_products = getAllProducts();
-        include("vues/v_new_bug.php");
         break;
     }
 }
