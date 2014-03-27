@@ -40,6 +40,8 @@ return  preg_match ('#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#', $mail);
  * renvoie 0 si non connecté
  *
  */
+
+// connection à modifier pour prendre en compte le statut de la personne qui c'est connecté
 function estConnecter(){
     $resu = 0;
     if(isset($_SESSION['login'])){
