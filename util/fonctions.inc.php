@@ -162,12 +162,13 @@ function ajouterNewBug(){
 
 function repareBug(){
     $obj = $_POST['objet'];
-    $cr = $_POST['compte'];
+    $resume = $_POST['resume'];
+    $id = $_GET['id'];
 
     require "bootstrap.php";        //faire un update pour passer le statut de open a close
 
 
-    $dql = "UPDATE Bug SET status = 'CLOSE' WHERE status = 'OPEN'";
+    $dql = "UPDATE Bug SET status = 'CLOSE', resume = '$resume' WHERE id = '$id'";
 
     $query = $entityManager->createQuery($dql);
     $repare = $query->getResult();
