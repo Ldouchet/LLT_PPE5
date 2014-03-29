@@ -16,18 +16,20 @@
         }else{
             $engineer = "non affecté";
         }
-        echo "<ul>";
-       //echo "<li><img src='./images/en_cours.png' width='30px' height='30px'/></li>";
-        echo "<li><a href='index.php?uc=dash&action=repare&id=".$bug->getId()."'><img src='./images/en_cours.png' width='30px' height='30px'/></a></li>";
-        echo "<li>".$bug->getCreated()->format('d.m.Y')."</li>";
-        echo "<li> affecté à : ".$engineer."</li>";
-        echo "<li> Produit(s) : ";
-        foreach ($bug->getProducts() as $product) {
-            echo "- ".$product->getName()." ";
+        if ($bug->getStatus() === "OPEN"){
+            echo "<ul>";
+           //echo "<li><img src='./images/en_cours.png' width='30px' height='30px'/></li>";
+            echo "<li><a href='index.php?uc=dash&action=repare&id=".$bug->getId()."'><img src='./images/en_cours.png' width='30px' height='30px'/></a></li>";
+            echo "<li>".$bug->getCreated()->format('d.m.Y')."</li>";
+            echo "<li> affecté à : ".$engineer."</li>";
+            echo "<li> Produit(s) : ";
+            foreach ($bug->getProducts() as $product) {
+                echo "- ".$product->getName()." ";
+            }
+            echo "</li>";
+            echo "<li>".$bug->getDescription()."</li>";
+            echo "</ul>";
         }
-        echo "</li>";
-        echo "<li>".$bug->getDescription()."</li>";
-        echo "</ul>";
     }
     ?>
 </div>

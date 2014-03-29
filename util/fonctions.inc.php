@@ -168,11 +168,59 @@ function repareBug(){
     require "bootstrap.php";        //faire un update pour passer le statut de open a close
 
 
-    $dql = "UPDATE Bug SET status = 'CLOSE', resume = '$resume' WHERE id = '$id'";
+    /*$dql = "UPDATE Bug SET status = 'CLOSE', description = '$resume' WHERE id = '$id'";
 
     $query = $entityManager->createQuery($dql);
-    $repare = $query->getResult();
+    var_dump($query);
+    $query->getResult();*/
+
+    $bug = $entityManager->find("Bug", $id);
+    $bug->close();
+
+    $entityManager->flush();
+
 
     return "Le bug a bien été réparée.";
+}
+
+function assignBug(){
+
+    if($_SESSION['login']['fonction'] === "Responsable"){
+
+        require "bootstrap.php";
+
+        if(isset($_POST['attribuer'])){
+
+
+            $idTech = $_POST['lst'];
+            $idBug = $_POST['id'];
+            var_dump($idTech, $idBug);
+            exit;
+            /*$dql = "UPDATE Bug SET status = 'CLOSE', description = '$resume' WHERE id = '$id'";
+
+            $query = $entityManager->createQuery($dql);
+            var_dump($query);
+            $query->getResult();
+
+            $bug = $entityManager->find("Bug", $id);
+            $bug->close();
+
+            $user = new User();
+            $bug = $entityManager->find("Bug", $idTech);
+            var_dump($bug);
+            $user->assignToProduct($bug);
+
+
+            $entityManager->flush();
+
+
+            return "Le bug a bien été attribuée.";*/
+        }
+
+
+    }else{
+        return "Le bug a bien été attribuée.";
+    }
+
 }
 ?>

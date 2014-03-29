@@ -1,4 +1,4 @@
-<form name="repare" method="POST" action="index.php?uc=dash&action=rapport">
+<form name="repare" method="POST" action="">
     <fieldset>
     <legend>Reparation d'un bug</legend>
     <p>
@@ -6,8 +6,8 @@
         <input id="objet" type="text" name="objet" size="50" maxlength="50">
     </p>
     <p>
-        <label for="compte">Compte Rendu : </label>
-        <textarea id="compte" name="compte" size="500" maxlength="500"></textarea>
+        <label for="resume">Compte Rendu : </label>
+        <textarea id="resume" name="resume" size="500" maxlength="500"></textarea>
     </p>
     <p>
         <input type="submit" value="Valider" name="valider">

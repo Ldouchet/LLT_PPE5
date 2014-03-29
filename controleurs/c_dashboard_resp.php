@@ -19,4 +19,14 @@ switch($action){
         include("vues/v_dashboard_resp.php");
         break;
     }
+    case 'assign':{
+        /*if (isset($_POST['objet'])){
+            $message = assignBug();
+            include("vues/v_message.php");
+        }*/
+        $the_bugs = getAllBug();
+        $the_techs = getAllTech();
+        include("vues/v_dashboard_resp.php");
+        break;
+    }
 }

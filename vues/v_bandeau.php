@@ -26,7 +26,7 @@
             }
             case 'Technicien':{
                 echo '<li><a href="index.php?uc=dash"> Mon tableau de bord </a></li>';
-                echo '<li><a href="index.php?uc=dash&action=repare"> Réparation </a></li>';
+                //echo '<li><a href="index.php?uc=dash&action=repare"> Réparation </a></li>';
                 echo '<li><a href="index.php?uc=deconnexion">Se déconnecter</a></li>';
                 break;
             }
