@@ -14,6 +14,9 @@ else
 
 switch($action){
     case 'list':{
+        $the_bugs = getBugsOpenByUser($_SESSION['login']['id']);
+        //$bugs_en_cours = $the_bugs[0];
+        //$bugs_fermes =  $the_bugs[1];
         $the_bugs = getAllBug();
         $the_techs = getAllTech();
         include("vues/v_dashboard_resp.php");
@@ -23,7 +26,7 @@ switch($action){
         $the_bugs = getAllBug();
         $the_techs = getAllTech();
         assignBug();
-        include("vues/v_dashboard_resp.php");
+        include("vues/v_assign.php");
         break;
     }
 }

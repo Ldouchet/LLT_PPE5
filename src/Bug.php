@@ -43,6 +43,23 @@ class Bug
      **/
     protected $products;
 
+    /**
+     * @Column(type="date")
+     **/
+    protected $delai;
+
+
+    public function setDelai($delai)
+    {
+        $this->delai = $delai;
+    }
+
+ 
+    public function getDelai()
+    {
+        return $this->delai;
+    }
+
     public function getId()
     {
         return $this->id;

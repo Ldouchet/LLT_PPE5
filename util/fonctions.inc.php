@@ -185,32 +185,19 @@ function assignBug(){
 
         if(isset($_POST['attribuer'])){
 
-
             $idTech = $_POST['lst'];
             $idBug = $_POST['id'];
+            $delai = $_POST['date'];
 
             $inge = $entityManager->find("User", $idTech);
             $bug = $entityManager->find("Bug", $idBug);
             $bug->setEngineer($inge);
+
+            $delai_date = new DateTime();
+            $delai_date->setDate(substr($delai, 6,4), substr($delai, 3,2),substr($delai, 0, 2) );
+
+            $bug->setDelai($delai_date);
             $entityManager->flush();
-
-            /*$dql = "UPDATE Bug SET status = 'CLOSE', description = '$resume' WHERE id = '$id'";
-
-            $query = $entityManager->createQuery($dql);
-            var_dump($query);
-            $query->getResult();
-
-            $bug = $entityManager->find("Bug", $id);
-            $bug->close();
-
-            $user = new User();
-            $bug = $entityManager->find("Bug", $idTech);
-            var_dump($bug);
-            $user->assignToProduct($bug);
-
-
-            $entityManager->flush();*/
-
 
             return "Le bug a bien été attribuée.";
         }
