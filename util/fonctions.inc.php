@@ -161,20 +161,14 @@ function ajouterNewBug(){
 }
 
 function repareBug(){
-    $obj = $_POST['objet'];
+
     $resume = $_POST['resume'];
     $id = $_GET['id'];
 
     require "bootstrap.php";        //faire un update pour passer le statut de open a close
 
-
-    /*$dql = "UPDATE Bug SET status = 'CLOSE', description = '$resume' WHERE id = '$id'";
-
-    $query = $entityManager->createQuery($dql);
-    var_dump($query);
-    $query->getResult();*/
-
     $bug = $entityManager->find("Bug", $id);
+    $bug->setdescription($resume);
     $bug->close();
 
     $entityManager->flush();
@@ -194,8 +188,12 @@ function assignBug(){
 
             $idTech = $_POST['lst'];
             $idBug = $_POST['id'];
-            var_dump($idTech, $idBug);
-            exit;
+
+            $inge = $entityManager->find("User", $idTech);
+            $bug = $entityManager->find("Bug", $idBug);
+            $bug->setEngineer($inge);
+            $entityManager->flush();
+
             /*$dql = "UPDATE Bug SET status = 'CLOSE', description = '$resume' WHERE id = '$id'";
 
             $query = $entityManager->createQuery($dql);
@@ -211,14 +209,14 @@ function assignBug(){
             $user->assignToProduct($bug);
 
 
-            $entityManager->flush();
+            $entityManager->flush();*/
 
 
-            return "Le bug a bien été attribuée.";*/
+            return "Le bug a bien été attribuée.";
         }
 
-
     }else{
+
         return "Le bug a bien été attribuée.";
     }
 
