@@ -1,5 +1,5 @@
 
-<form name="new_bug" method="POST" action="index.php?uc=dash&action=nouveau">
+<form name="new_bug" method="POST" action="index.php?uc=dash&action=nouveau" enctype="multipart/form-data">
     <fieldset>
     <legend>Signalement d'un nouveau bug</legend>
     <p>
@@ -12,7 +12,7 @@
     </p>
     <p>
         <label for="apps">Application(s) concernées : </label>
-        <select multiple id="apps" name="apps[]">
+        <select multiple id="apps" name="apps[]" required="true">
             <?php
             foreach($the_products as $p){
                 echo '<option value="'.$p->getId().'">'.$p->getName().'</option>';
@@ -20,6 +20,9 @@
             ?>
         </select>
     </p>
+
+        <input type="hidden" name="MAX_FILE_SIZE" value="10000000">
+        Fichier : <input type="file" name="avatar">
     <p>
         <input type="submit" value="Valider" name="valider">
         <input type="reset" value="Annuler" name="annuler">

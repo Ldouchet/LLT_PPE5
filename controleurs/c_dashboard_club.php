@@ -23,6 +23,8 @@ switch($action){
     case 'nouveau':{
         if (isset($_POST['objet'])){
             $message = ajouterNewBug();
+            $files = $_FILES['avatar'];
+            uploadFiles($files);
             include("vues/v_message.php");
         }
         $the_products = getAllProducts();
