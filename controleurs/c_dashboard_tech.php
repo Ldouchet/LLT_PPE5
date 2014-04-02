@@ -23,7 +23,7 @@ switch($action){
             $message = repareBug();
             include("vues/v_message.php");
         }
-        $the_bugs = getAllBug();
+        $bug= findBugById($_GET['id']);
         include("vues/v_repare.php");
         break;
     }

@@ -112,6 +112,12 @@ function getAllBug(){
     return $Bugs;
 }
 
+function findBugById($id){
+    require "bootstrap.php";
+    $bug = $entityManager->find("Bug", $id);
+    return $bug;
+}
+
 function getAllTech(){
     require "bootstrap.php";
 
@@ -129,13 +135,15 @@ function getAllProducts(){
     return $products;
 }
 
-function ajouterNewBug(){
+function ajouterNewBug($files){
     $obj = $_POST['objet'];
     $lib = $_POST['libelle'];
     $apps = $_POST['apps'];
+    $lien = $files['name'];
 
 
-    //echo var_dump($apps);
+
+        //echo var_dump($apps);
 
     require "bootstrap.php";
 
@@ -146,6 +154,7 @@ function ajouterNewBug(){
     $bug->setDescription($lib);
     $bug->setCreated(new DateTime("now"));
     $bug->setStatus("OPEN");
+    $bug->setScreen("upload/".$lien);
 
     foreach ($apps as $productId) {
         $product = $entityManager->find("Product", $productId);
@@ -189,6 +198,7 @@ function assignBug(){
             $idTech = $_POST['lst'];
             $idBug = $_POST['id'];
             $delai = $_POST['date'];
+
 
             $inge = $entityManager->find("User", $idTech);
             $bug = $entityManager->find("Bug", $idBug);
@@ -252,42 +262,5 @@ function uploadFiles($files){
 
 }
 
-
-
-function envoieFichier($file)
-{
-    $fichier = basename($file['name']);
-    $taille_maxi = 1000000;
-    $taille = filesize($file['tmp_name']);
-    $extensions = array('.png', '.gif', '.jpg', '.jpeg' ,'.pdf','.doc','.odt' );
-    $extension = strrchr($file['name'], '.');
-    //Début des vérifications de sécurité...
-    if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
-    {
-        $erreur = '<br>Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc...';
-    }
-    if($taille>$taille_maxi)
-    {
-        $erreur = '<br>Le fichier est trop gros...';
-    }
-    if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
-    {
-
-        if(move_uploaded_file($file['tmp_name'], "upload/". $fichier))
-            //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
-        {
-            echo "</br>Le fichier a bien été envoyé";
-            // echo var_dump($fichier);
-            return $fichier;
-        }
-        else //Sinon (la fonction renvoie FALSE).
-        {
-            echo '<br>Echec de l\'upload !';
-            return false;
-        }
-    }
-    else
-        echo $erreur;
-}
 
 ?>

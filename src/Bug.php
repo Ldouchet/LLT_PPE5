@@ -48,6 +48,27 @@ class Bug
      **/
     protected $delai;
 
+    /**
+     * @Column(type="string")
+     **/
+
+    protected $screen;
+
+    /**
+     * @param mixed $screen
+     */
+    public function setScreen($screen)
+    {
+        $this->screen = $screen;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getScreen()
+    {
+        return $this->screen;
+    }
 
     public function setDelai($delai)
     {

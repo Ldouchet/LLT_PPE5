@@ -22,8 +22,8 @@ switch($action){
     }
     case 'nouveau':{
         if (isset($_POST['objet'])){
-            $message = ajouterNewBug();
             $files = $_FILES['avatar'];
+            $message = ajouterNewBug($files);
             uploadFiles($files);
             include("vues/v_message.php");
         }
