@@ -39,10 +39,20 @@ switch($uc)
     }
     case 'dash':
     {
-        $the_bugs = getBugsOpenByUser(2);
-        $bugs_en_cours = $the_bugs[0];
-        $bugs_fermes =  $the_bugs[1];
-        include("./vues/v_dashclub.php");
+        if (isset($_SESSION['login'])){
+            if ($_SESSION['login']['fonction'] == "Responsable" ){
+                include("./controleurs/c_dashboard_resp.php");
+            }else{
+                if ($_SESSION['login']['fonction'] == "Technicien" ){
+                    include("./controleurs/c_dashboard_tech.php");
+                }else{
+                    if ($_SESSION['login']['fonction'] == "Utilisateurs" ){
+
+                        include("./controleurs/c_dashboard_club.php");
+                    }
+                }
+            }
+        }
         break;
     }
 }
