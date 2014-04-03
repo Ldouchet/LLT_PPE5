@@ -215,7 +215,34 @@ function assignBug(){
 
     }else{
 
-        return "Le bug a bien été attribuée.";
+        return "Vous n'avait pas les droits pour attribuées les bugs";
+    }
+
+}
+
+function deleteBug(){
+
+    if($_SESSION['login']['fonction'] === "Responsable"){
+
+        require "bootstrap.php";
+
+        $BugRepository = $entityManager->getRepository('Bug');
+        $Bugs = $BugRepository->findAll();
+
+        if(isset($_POST['supprimer'])){
+
+            $idBug = $_POST['id'];
+
+            //$bug = $entityManager->findAll("Bug", $idBug);
+            //$bug->remove();
+            $entityManager->flush();
+
+            return "Le bug a bien été supprimer.";
+        }
+
+    }else{
+
+        return "Vous n'avait pas les droits pour supprimer";
     }
 
 }

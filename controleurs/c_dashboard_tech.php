@@ -15,16 +15,16 @@ else
 switch($action){
     case 'list':{
         $the_bugs = getAllBug();
-        include("mobile/vues/v_dashboard_tech.php");
+        include("vues/v_dashboard_tech.php");
         break;
     }
     case 'repare':{
         if (isset($_POST['objet'])){
             $message = repareBug();
-            include("mobile/vues/v_message.php");
+            include("vues/v_message.php");
         }
         $bug= findBugById($_GET['id']);
-        include("mobile/vues/v_repare.php");
+        include("vues/v_repare.php");
         break;
     }
 }
