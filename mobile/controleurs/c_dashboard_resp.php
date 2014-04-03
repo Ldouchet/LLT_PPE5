@@ -19,7 +19,7 @@ switch($action){
         //$bugs_fermes =  $the_bugs[1];
         $the_bugs = getAllBug();
         $the_techs = getAllTech();
-        include("vues/v_dashboard_resp.php");
+        include("vues/v_dashresp.php");
         break;
     }
     case 'assign':{

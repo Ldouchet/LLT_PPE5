@@ -1,5 +1,9 @@
+<a id='lnkDialog' href="#ticket_dialog" data-transition="flip" style='display:none;'></a>
 
 <div id="liste_tickets">
+    <div data-role="collapsible-set" data-theme="b" data-content-theme="a">
+        <div id="liste_tickets">
+            <div data-role="collapsible" data-collapsed="true">
     <h2>Tickets en cours</h2>
 <?php
 foreach ($bugs_en_cours as $bug) {
@@ -21,9 +25,11 @@ foreach ($bugs_en_cours as $bug) {
     echo "</ul>";
 }
 ?>
-</div>
+        </div>
+
 
 <div id="liste_tickets">
+    <div data-role="collapsible">
     <h2>Tickets fermés</h2>
     <?php
     foreach ($bugs_fermes as $bug) {
@@ -45,4 +51,18 @@ foreach ($bugs_en_cours as $bug) {
         echo "</ul>";
     }
     ?>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<div data-role="dialog" id="ticket_dialog">
+    <div data-role="header">
+        <h1>Detail du ticket <div id="id_ticket"></div></h1>
+    </div>
+    <div data-role="content">
+        <div id="descri_ticket"></div>
+        <hr/>
+        <div id="solution_ticket"></div>
+    </div>
 </div>
