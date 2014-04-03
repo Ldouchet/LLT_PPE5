@@ -12,7 +12,8 @@
             <div data-role="collapsible" data-collapsed="true">
                 <h3>Tickets en cours</h3>
                 <p>
-                <table><tr><th></th><th>Numéro</th><th>Date</th><th>Technicien</th><th>Produits concernés</th></tr>
+                <div class="ui-grid-d">
+                    <div class="ui-block-a"></div> <div class="ui-block-b">Numero</div> <div class="ui-block-c"> Date </div> <div class="ui-block-d">Technicien</div> <div class="ui-block-e">Produit concernés</div>
                     <?php
                     foreach ($bugs_en_cours as $bug) {
                         if ($bug->getEngineer() != null){
@@ -20,23 +21,23 @@
                         }else{
                             $engineer = "non affecté";
                         }
-                        echo "<tr>";
-                        echo "<td><img src='../images/en_cours.png' width='30px' height='30px'/></td>";
-                        echo "<td class='colonneid'>".$bug->getId()."</td>";
-                        echo "<td class='colonnedate'>".$bug->getCreated()->format('d.m.Y')."</td>";
-                        echo "<td class='colonnetech'>".$engineer."</td>";
-                        echo "<td class='colonneprod'>";
+
+                        echo "<div class='ui-block-a'><img src='../images/en_cours.png' width='30px' height='30px'/></div>";
+                        echo "<div class='ui-block-b'>".$bug->getId()."</div>";
+                        echo "<div class='ui-block-c'>".$bug->getCreated()->format('d.m.Y')."</div>";
+                        echo "<div class='ui-block-d'>".$engineer."</div>";
+                        echo "<div class='ui-block-e''>";
                         foreach ($bug->getProducts() as $product) {
                             echo "- ".$product->getName()." ";
                         }
-                        echo "</td>";
-                        //echo "<li>".$bug->getDescription()."</li>";
-                        echo "</tr>";
+                        echo "</div>";
+
+
                     }
                     ?>
 
 
-                </table>
+                </div>
                 </p>
             </div>
 

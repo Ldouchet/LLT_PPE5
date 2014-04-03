@@ -17,7 +17,7 @@ switch($action){
         $the_bugs = getBugsOpenByUser($_SESSION['login']['id']);
         $bugs_en_cours = $the_bugs[0];
         $bugs_fermes =  $the_bugs[1];
-        include("vues/v_dashboard_club.php");
+        include("vues/v_dashclub.php");
         break;
     }
     case 'nouveau':{
