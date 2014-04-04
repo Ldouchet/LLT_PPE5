@@ -136,6 +136,17 @@ function getAllProducts(){
     return $products;
 }
 
+function getBugsbyTech(){
+    require "bootstrap.php";
+    $idTech = $_SESSION['login']['id'];
+
+    $dql = "SELECT b FROM Bug b WHERE b.engineer = '$idTech'";
+
+    $query = $entityManager->createQuery($dql);
+    $BugsbyTech = $query->getResult();
+    return $BugsbyTech;
+}
+
 function ajouterNewBug($files){
     $obj = $_POST['objet'];
     $lib = $_POST['libelle'];

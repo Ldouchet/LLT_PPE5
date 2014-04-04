@@ -14,7 +14,8 @@ else
 
 switch($action){
     case 'list':{
-        $the_bugs = getAllBug();
+        //$the_bugs = getAllBug();
+        $the_bugs = getBugsbyTech();
         include("vues/v_dashboard_tech.php");
         break;
     }
