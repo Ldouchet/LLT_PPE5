@@ -104,6 +104,12 @@ function getBugsOpenByUser($id){
     $retour = array($tab1, $tab2);
     return $retour;
 }
+function findBugById($id){
+    require "bootstrap.php";
+    $bug = $entityManager->find("Bug", $id);
+    return $bug;
+}
+
 
 function getAllBug(){
     require "bootstrap.php";
@@ -111,13 +117,6 @@ function getAllBug(){
     $Bugs = $BugRepository->findAll();
     return $Bugs;
 }
-
-function findBugById($id){
-    require "bootstrap.php";
-    $bug = $entityManager->find("Bug", $id);
-    return $bug;
-}
-
 
 function getAllTech(){
     require "bootstrap.php";
@@ -127,6 +126,16 @@ function getAllTech(){
     $query = $entityManager->createQuery($dql);
     $Techs = $query->getResult();
     return $Techs;
+}
+
+function getAllResp(){
+    require "bootstrap.php";
+
+    $dql = "SELECT u FROM User u WHERE u.fonction = 'Responsable'";
+
+    $query = $entityManager->createQuery($dql);
+    $Resps = $query->getResult();
+    return $Resps;
 }
 
 function getAllProducts(){
@@ -153,14 +162,9 @@ function ajouterNewBug($files){
     $apps = $_POST['apps'];
     $lien = $files['name'];
 
-
-
-        //echo var_dump($apps);
-
     require "bootstrap.php";
 
     $reporter = $entityManager->find("User", $_SESSION['login']['id']);
-    //$engineer = new User();
 
     $bug = new Bug();
     $bug->setDescription($lib);

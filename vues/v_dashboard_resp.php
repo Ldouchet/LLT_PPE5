@@ -9,7 +9,9 @@
                 $engineer = "non affecté";
             }
             echo "<ul>";
-            echo "<li><img src='./images/en_cours.png' width='30px' height='30px'/></li>";
+            //echo "<li><img src='./images/en_cours.png' width='30px' height='30px'/></li>";
+            echo "<li><a href='index.php?uc=dash&action=repare&id=".$bug->getId()."'><img src='./images/en_cours.png' width='30px' height='30px'/></a></li>";
+            //Repare tous les bug même si il lui sont pas attribuer IL FAUT PAS
             echo "<li> Création: ".$bug->getCreated()->format('d.m.Y')."</li>";
 
             if ($bug->getDelai() != null){

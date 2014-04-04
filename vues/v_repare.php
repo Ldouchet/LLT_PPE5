@@ -11,7 +11,7 @@
         </p>
         <p>
             <?php
-            if($bug->getScreen() !=null){
+            if($bug->getScreen() != null){
                 echo'<label for="image">Screen : </label>';
                 echo'<img src="$bug->getScreen()" width="550" height="350">';
             }

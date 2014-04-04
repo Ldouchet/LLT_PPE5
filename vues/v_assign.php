@@ -22,10 +22,13 @@
                         foreach($the_techs as $tech){
                             echo '<option value="'.$tech->getId().'">'.$tech->getName().'</option>';
                         }
+                        foreach($the_resp as $resp){
+                            echo '<option value="'.$resp->getId().'">'.$resp->getName().'</option>';
+                        }
                         ?>
                     </select>
                     <?php
-                    echo '<input type="date" name="date" placeholder="jj/mm/aa">';
+                    echo '<input type="date" name="date" placeholder="jj-mm-aa">';
                     //echo "<li> affecté à : ".$engineer."</li>";
                     echo "<li> Produit(s) : ";
                     foreach ($bug->getProducts() as $product) {
