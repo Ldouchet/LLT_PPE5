@@ -9,7 +9,6 @@
  * Time: 23:07
  */
         foreach ($the_bugs as $bug) {
-            if ($bug->getEngineer() == null){
 
                 if ($bug->getEngineer() != null){
                     $engineer = $bug->getEngineer()->getName();
@@ -27,11 +26,12 @@
                     }
                     echo "</li>";
                     echo "<li>".$bug->getDescription()."</li>";
+                    echo '<form method="POST" action="#">';
                     echo '<input type="submit" name="supprimer" value="Supprimer" >';
                     echo '<input type="hidden"  name="id" value="'.$bug->getId().'">';
+                    echo '</form>';
                     echo "</ul>";
                 }
-            }
         }
         /*echo "<li> affecté à : </li>";
         ?>

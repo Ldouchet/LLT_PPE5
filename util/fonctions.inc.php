@@ -118,6 +118,7 @@ function findBugById($id){
     return $bug;
 }
 
+
 function getAllTech(){
     require "bootstrap.php";
 
@@ -209,8 +210,7 @@ function assignBug(){
 
             $bug->setDelai($delai_date);
             $entityManager->flush();
-
-            return "Le bug a bien été attribuée.";
+            header('Location: index.php?uc=dash&action=assign');
         }
 
     }else{
@@ -226,18 +226,21 @@ function deleteBug(){
 
         require "bootstrap.php";
 
-        $BugRepository = $entityManager->getRepository('Bug');
-        $Bugs = $BugRepository->findAll();
-
         if(isset($_POST['supprimer'])){
 
             $idBug = $_POST['id'];
 
-            //$bug = $entityManager->findAll("Bug", $idBug);
-            //$bug->remove();
-            $entityManager->flush();
+            if($idBug != null){            //var_dump($idBug);
 
-            return "Le bug a bien été supprimer.";
+                $bug = $entityManager->find("Bug", $idBug);
+                $entityManager->remove($bug);
+                $entityManager->flush();
+                header('Location: index.php?uc=dash&action=delete');
+
+            }else{
+
+                header('Location: index.php?uc=dash');
+            }
         }
 
     }else{
