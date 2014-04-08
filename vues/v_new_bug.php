@@ -1,4 +1,3 @@
-
 <form name="new_bug" method="POST" action="index.php?uc=dash&action=nouveau" enctype="multipart/form-data">
     <fieldset>
     <legend>Signalement d'un nouveau bug</legend>
