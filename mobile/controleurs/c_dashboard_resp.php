@@ -25,8 +25,15 @@ switch($action){
     case 'assign':{
         $the_bugs = getAllBug();
         $the_techs = getAllTech();
+        $the_resp = getAllResp();
         assignBug();
         include("vues/v_assign.php");
+        break;
+    }
+    case 'delete':{
+        $the_bugs = getAllBug();
+        deleteBug();
+        include("vues/v_delete.php");
         break;
     }
 }

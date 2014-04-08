@@ -7,7 +7,10 @@
         </div>
         <div data-role="content">
             <h4>Bienvenue sur votre console de gestion</h4>
-
+            <?php
+                echo "<a href='index.php?uc=dash&action=assign' class='ui-btn ui-shadow ui-corner-all ui-icon-gear ui-btn-icon-notext'/></a>";
+                echo "<a href='index.php?uc=dash&action=delete' class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext'/></a>";
+            ?>
             <div data-role="collapsible-set" data-theme="c" data-content-theme="c">
                 <div id="liste_tickets">
                     <div data-role="collapsible" data-collapsed="true">

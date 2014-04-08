@@ -23,7 +23,8 @@
                             if ($bug->getStatus() === "OPEN"){
                                 echo "<tr>";
                                 //echo "<li><img src='./images/en_cours.png' width='30px' height='30px'/></li>";
-                                echo "<td><a href='index.php?uc=dash&action=repare&id=".$bug->getId()."' data-role='button' data-ajax='false'><img src='../images/en_cours.png' width='100px' height='100px'/></a></td>";
+                                //echo "<td><a href='index.php?uc=dash&action=repare&id=".$bug->getId()."' data-role='button' data-ajax='false'><img src='../images/en_cours.png' width='100px' height='100px'/></a></td>";
+                                echo "<td><a href='index.php?uc=dash&action=repare&id=".$bug->getId()."' class='ui-btn ui-shadow ui-corner-all ui-icon-gear ui-btn-icon-notext'/></a></td>";
                                 echo "<td class='colonnedate'>".$bug->getCreated()->format('d.m.Y')."</td>";
                                 echo "<td class='colonnetech'> affecté à : ".$engineer."</td>";
                                 echo "<td class='colonneprod'> Produit(s) : ";
