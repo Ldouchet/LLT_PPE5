@@ -104,18 +104,18 @@ function getBugsOpenByUser($id){
     $retour = array($tab1, $tab2);
     return $retour;
 }
+function findBugById($id){
+    require "bootstrap.php";
+    $bug = $entityManager->find("Bug", $id);
+    return $bug;
+}
+
 
 function getAllBug(){
     require "bootstrap.php";
     $BugRepository = $entityManager->getRepository('Bug');
     $Bugs = $BugRepository->findAll();
     return $Bugs;
-}
-
-function findBugById($id){
-    require "bootstrap.php";
-    $bug = $entityManager->find("Bug", $id);
-    return $bug;
 }
 
 function getAllTech(){
@@ -128,11 +128,32 @@ function getAllTech(){
     return $Techs;
 }
 
+function getAllResp(){
+    require "bootstrap.php";
+
+    $dql = "SELECT u FROM User u WHERE u.fonction = 'Responsable'";
+
+    $query = $entityManager->createQuery($dql);
+    $Resps = $query->getResult();
+    return $Resps;
+}
+
 function getAllProducts(){
     require "bootstrap.php";
     $productRepository = $entityManager->getRepository('Product');
     $products = $productRepository->findAll();
     return $products;
+}
+
+function getBugsbyTech(){
+    require "bootstrap.php";
+    $idTech = $_SESSION['login']['id'];
+
+    $dql = "SELECT b FROM Bug b WHERE b.engineer = '$idTech'";
+
+    $query = $entityManager->createQuery($dql);
+    $BugsbyTech = $query->getResult();
+    return $BugsbyTech;
 }
 
 function ajouterNewBug($files){
@@ -141,14 +162,9 @@ function ajouterNewBug($files){
     $apps = $_POST['apps'];
     $lien = $files['name'];
 
-
-
-        //echo var_dump($apps);
-
     require "bootstrap.php";
 
     $reporter = $entityManager->find("User", $_SESSION['login']['id']);
-    //$engineer = new User();
 
     $bug = new Bug();
     $bug->setDescription($lib);
@@ -209,13 +225,42 @@ function assignBug(){
 
             $bug->setDelai($delai_date);
             $entityManager->flush();
-
-            return "Le bug a bien été attribuée.";
+            header('Location: index.php?uc=dash&action=assign');
         }
 
     }else{
 
-        return "Le bug a bien été attribuée.";
+        return "Vous n'avait pas les droits pour attribuées les bugs";
+    }
+
+}
+
+function deleteBug(){
+
+    if($_SESSION['login']['fonction'] === "Responsable"){
+
+        require "bootstrap.php";
+
+        if(isset($_POST['supprimer'])){
+
+            $idBug = $_POST['id'];
+
+            if($idBug != null){            //var_dump($idBug);
+
+                $bug = $entityManager->find("Bug", $idBug);
+                $entityManager->remove($bug);
+                $entityManager->flush();
+                header('Location: index.php?uc=dash&action=delete');
+
+            }else{
+
+                header('Location: index.php?uc=dash');
+            }
+        }
+
+    }else{
+
+        return "Vous n'avait pas les droits pour supprimer";
     }
 
 }

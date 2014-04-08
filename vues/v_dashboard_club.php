@@ -1,4 +1,3 @@
-
 <div id="liste_tickets">
     <h2>Tickets en cours</h2>
 <?php
@@ -22,6 +21,7 @@ foreach ($bugs_en_cours as $bug) {
 }
 ?>
 </div>
+
 
 <div id="liste_tickets">
     <h2>Tickets fermés</h2>

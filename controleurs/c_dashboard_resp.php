@@ -19,14 +19,31 @@ switch($action){
         //$bugs_fermes =  $the_bugs[1];
         $the_bugs = getAllBug();
         $the_techs = getAllTech();
+        $the_resp = getAllResp();
         include("vues/v_dashboard_resp.php");
         break;
     }
     case 'assign':{
         $the_bugs = getAllBug();
         $the_techs = getAllTech();
+        $the_resp = getAllResp();
         assignBug();
         include("vues/v_assign.php");
+        break;
+    }
+    case 'delete':{
+        $the_bugs = getAllBug();
+        deleteBug();
+        include("vues/v_delete.php");
+        break;
+    }
+    case 'repare':{
+        if (isset($_POST['objet'])){
+            $message = repareBug();
+            include("vues/v_message.php");
+        }
+        $bug= findBugById($_GET['id']);
+        include("vues/v_repare.php");
         break;
     }
 }

@@ -51,7 +51,6 @@ class Bug
     /**
      * @Column(type="string")
      **/
-
     protected $screen;
 
     /**

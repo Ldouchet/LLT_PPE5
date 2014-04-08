@@ -13,12 +13,12 @@
             case 'Responsable':{
                 echo '<li><a href="index.php?uc=dash"> Mon tableau de bord </a></li>';
                 echo '<li><a href="index.php?uc=dash&action=assign"> Assignations </a></li>';
+                echo '<li><a href="index.php?uc=dash&action=delete"> Suppressions </a></li>';
                 echo '<li><a href="index.php?uc=deconnexion">Se déconnecter</a></li>';
                 break;
             }
             case 'Utilisateurs':{
                 echo '<li><a href="index.php?uc=dash"> Mon tableau de bord </a></li>';
-                //echo '<li><a href="index.php?uc=liste_tickets"> Incidents déclarés </a></li>';
                 echo '<li><a href="index.php?uc=dash&action=nouveau"> Nouvel incident</a></li>';
                 echo '<li><a href="index.php?uc=deconnexion">Se déconnecter</a></li>';
                 break;
