@@ -13,7 +13,7 @@
                 <div data-role="collapsible" data-collapsed="true">
                     <h3>Tickets en cours</h3>
                     <p>
-                    <table><tr><th></th><th>Date</th><th>Technicien</th><th></th><th>Délai</th><th>Produits concernés</th><th></th><th>Descrption</th><th>Attribué</th></tr>
+                    <table><tr><th></th><th>Date</th><th>Technicien</th> <th>Délai</th><th>Produits concernés</th><th></th><th>Descrption</th><th>Attribué</th></tr>
 
         <?php
         foreach ($the_bugs as $bug) {
@@ -28,7 +28,7 @@
                     echo "<tr>";
                     echo "<td class='colonneimg'><img src='../images/en_cours.png' width='30px' height='30px'/></td>";
                     echo "<td class='colonnedate'>".$bug->getCreated()->format('d.m.Y')."</td>";
-                    echo "<td class='colonnelabel'> affecté à : </td>";
+
                     //echo "<label for='grid-select-1' class='ui-hidden-accessible'>Technicien</label>";
                     echo "<td class='colonneselect'><select id='grid-select-1' name='grid-select-1' data-shadow='false'>";
                         foreach($the_techs as $tech){
@@ -41,9 +41,9 @@
                     //echo '<input type="date" name="date" placeholder="jj-mm-aa">';
                     echo '<td class="colonnedelai"><input type="text" data-role="date" placeholder="jj/mm/aaaa"></td>';
                     //echo "<li> affecté à : ".$engineer."</li>";
-                    echo "<td class='colonneprod'> Produit(s) : ";
+                    echo "<td class='colonneprod'>";
                     foreach ($bug->getProducts() as $product) {
-                        echo "- ".$product->getName()." ";
+                        echo " ".$product->getName()." ";
                     }
                     echo "</td>";
                     echo "<td></td><td class='colonnedescr'>".$bug->getDescription()."</td>";
