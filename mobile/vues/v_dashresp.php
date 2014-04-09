@@ -29,7 +29,7 @@
             echo "<td> Création: ".$bug->getCreated()->format('d.m.Y')."</td>";
 
             if ($bug->getDelai() != null){
-                echo "<td> Délai: ".$bug->getDelai()->format('d.m.Y')."</td>";
+                echo "<td>  ".$bug->getDelai()->format('d.m.Y')."</td>";
             }
 
             echo "<td> ".$engineer."</td>";
