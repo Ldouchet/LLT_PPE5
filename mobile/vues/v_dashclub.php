@@ -6,6 +6,11 @@
     </div>
     <div data-role="content">
         <h4>Bienvenue sur votre console de gestion</h4>
+        <?php
+            echo "<a href='index.php?uc=dash&action=nouveau' class='ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-inline'/></a>";
+            echo "<a href='index.php?uc=deconnexion' class='ui-btn ui-shadow ui-corner-all ui-icon-power ui-btn-icon-notext ui-btn-inline'/></a>";
+        ?>
+
 
         <div data-role="collapsible-set" data-theme="c" data-content-theme="c">
             <div id="liste_tickets">
