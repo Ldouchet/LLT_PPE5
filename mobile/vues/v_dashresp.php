@@ -14,8 +14,8 @@
                     <div data-role="collapsible" data-collapsed="true">
     <h2>Tickets en cours</h2>
     <p>
-    <div class="ui-grid-d">
-        <div class="ui-block-a"></div> <div class="ui-block-b">Date création</div> <div class="ui-block-c"> Délai </div> <div class="ui-block-d">Technicien</div> <div class="ui-block-e">Produit concernés</div><div class="ui-block-f">Description</div>
+    <table>
+        <tr><th></th></th><th>Date création</th><th>délai</th><th>Technicien</th><th>Produit concernés</th><th>Description</th></tr>
     <?php
     foreach ($the_bugs as $bug) {
         if ($bug->getStatus() == "OPEN"){
@@ -25,23 +25,23 @@
                 $engineer = "non affecté";
             }
 
-            echo "<div class='ui-block-a'><img src='../images/en_cours.png' width='30px' height='30px'/></div>";
-            echo "<div class='ui-block-b'> Création: ".$bug->getCreated()->format('d.m.Y')."</div>";
+            echo "<tr></tr><td><img src='../images/en_cours.png' width='30px' height='30px'/></td>";
+            echo "<td> Création: ".$bug->getCreated()->format('d.m.Y')."</td>";
 
             if ($bug->getDelai() != null){
-                echo "<div class='ui-block-c'> Délai: ".$bug->getDelai()->format('d.m.Y')."</div>";
+                echo "<td> Délai: ".$bug->getDelai()->format('d.m.Y')."</td>";
             }
 
-            echo "<div class='ui-block-d'> affecté à : ".$engineer."</div>";
-            echo "<div class='ui-block-e'> Produit(s) : ";
+            echo "<td> ".$engineer."</td>";
+            echo "<td> ";
             foreach ($bug->getProducts() as $product) {
-                echo "- ".$product->getName()." "."</div>";
+                echo " ".$product->getName()." "."</td>";
             }
-            echo "<div class='ui-block-f'>".$bug->getDescription()."</div>";
+            echo "<td>".$bug->getDescription()."</td></tr>";
         }
     }
     ?>
-    </div>
+    </table>
     </p>
 </div>
 
