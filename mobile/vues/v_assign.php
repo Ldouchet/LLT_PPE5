@@ -9,7 +9,7 @@
         <h4>Bienvenue sur votre console de gestion</h4>
 
         <div data-role="collapsible-set" data-theme="c" data-content-theme="c">
-            <div id="liste_tickets">
+            <div id="liste_tickets_assign">
                 <div data-role="collapsible" data-collapsed="true">
                     <h3>Tickets en cours</h3>
                     <p>
