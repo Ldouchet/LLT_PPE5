@@ -17,39 +17,37 @@
             <div data-role="collapsible" data-collapsed="true">
                 <h3>Tickets en cours</h3>
                 <p>
-                <div class="ui-grid-d">
-                    <div class="ui-block-a"></div> <div class="ui-block-b">Numero</div> <div class="ui-block-c"> Date </div> <div class="ui-block-d">Technicien</div> <div class="ui-block-e">Produit concernés</div>
-                    <?php
+                <table><tr><th></th><th>Date</th><th>Technicien</th><th>Produit concernés</th></tr>
+                <?php
                     foreach ($bugs_en_cours as $bug) {
                         if ($bug->getEngineer() != null){
                             $engineer = $bug->getEngineer()->getName();
                         }else{
                             $engineer = "non affecté";
                         }
-
-                        echo "<div class='ui-block-a'><img src='../images/en_cours.png' width='30px' height='30px'/></div>";
-                        echo "<div class='ui-block-b'>".$bug->getId()."</div>";
-                        echo "<div class='ui-block-c'>".$bug->getCreated()->format('d.m.Y')."</div>";
-                        echo "<div class='ui-block-d'>".$engineer."</div>";
-                        echo "<div class='ui-block-e''>";
+                        echo '<tr>';
+                        echo "<td><img src='../images/en_cours.png' width='30px' height='30px'/></td>";
+                        echo "<td>".$bug->getCreated()->format('d.m.Y')."</td>";
+                        echo "<td>".$engineer."</td>";
+                        echo "<td>";
                         foreach ($bug->getProducts() as $product) {
                             echo "- ".$product->getName()." ";
                         }
-                        echo "</div>";
+                        echo "</td>";
+                        echo "</tr>";
 
 
                     }
                     ?>
 
-
-                </div>
+                </table>
                 </p>
             </div>
 
             <div data-role="collapsible">
                 <h3>Tickets cloturés</h3>
                 <p>
-                <table><tr><th></th><th>Numéro</th><th>Date</th><th>Technicien</th><th>Produits concernés</th></tr>
+                <table><tr><th></th><th>Date</th><th>Technicien</th><th>Produits concernés</th></tr>
                     <?php
                     foreach ($bugs_fermes as $bug) {
                         if ($bug->getEngineer() != null){
@@ -59,7 +57,6 @@
                         }
                         echo "<tr>";
                         echo "<td><img src='../images/ferme.png' width='30px' height='30px'/></td>";
-                        echo "<td class='colonneid'>".$bug->getId()."</td>";
                         echo "<td class='colonnedate'>".$bug->getCreated()->format('d.m.Y')."</td>";
                         echo "<td class='colonnetech'>".$engineer."</td>";
                         echo "<td class='colonneprod'>";
@@ -93,6 +90,3 @@
         <div id="solution_ticket"></div>
     </div>
 </div>
-
-</body>
-</html>
