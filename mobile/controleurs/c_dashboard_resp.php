@@ -27,6 +27,7 @@ switch($action){
         $the_techs = getAllTech();
         $the_resp = getAllResp();
         assignBug();
+
         include("vues/v_assign.php");
         break;
     }

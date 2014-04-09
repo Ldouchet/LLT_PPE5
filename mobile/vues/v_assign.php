@@ -24,13 +24,12 @@
                     $engineer = "non affecté";
                 }
                 if ($bug->getStatus() === "OPEN"){
-                    echo '<form method="POST" action="#">';
                     echo "<tr>";
                     echo "<td class='colonneimg'><img src='../images/en_cours.png' width='30px' height='30px'/></td>";
                     echo "<td class='colonnedate'>".$bug->getCreated()->format('d.m.Y')."</td>";
 
                     //echo "<label for='grid-select-1' class='ui-hidden-accessible'>Technicien</label>";
-                    echo "<td class='colonneselect'><select id='grid-select-1' name='grid-select-1' data-shadow='false'>";
+                    echo "<td class='colonneselect'><select id='grid-select-1' name='lst' data-shadow='false'>";
                         foreach($the_techs as $tech){
                             echo '<option value="'.$tech->getId().'">'.$tech->getName().'</option>';
                         }
@@ -48,7 +47,7 @@
                     echo "</td>";
                     echo "<td></td><td class='colonnedescr'>".$bug->getDescription()."</td>";
                     //echo '<td><input type="submit" name="attribuer" value="Attribuer" ></td>';
-                    echo '<td><button type="submit" value="Attribuer" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-plus ui-btn-icon-notext"></td>';
+                    echo '<td><button type="submit" name="attribuer" value="attribuer" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-plus ui-btn-icon-notext"></td>';
                     echo '<input type="hidden"  name="id" value="'.$bug->getId().'">';
                     echo '</form>';
                     echo "</tr>";
