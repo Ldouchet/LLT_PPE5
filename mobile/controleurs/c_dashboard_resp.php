@@ -7,6 +7,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
+echo var_dump($_REQUEST);
+
+
 if(!isset($_REQUEST['action']))
     $action = 'list';
 else
@@ -27,7 +30,6 @@ switch($action){
         $the_techs = getAllTech();
         $the_resp = getAllResp();
         assignBug();
-
         include("vues/v_assign.php");
         break;
     }

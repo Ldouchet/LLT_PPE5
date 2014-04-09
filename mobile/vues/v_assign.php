@@ -1,5 +1,5 @@
 <a id='lnkDialog' href="#ticket_dialog" data-transition="flip" style='display:none;'></a>
-<form name="assign" method="POST" action="index.php?uc=dash&action=assign">
+<!-- <form name="assign" method="POST" data-ajax="false" action="index.php?uc=dash&action=assign"> -->
 
 <div data-role="page">
     <div data-role="header">
@@ -13,7 +13,7 @@
                 <div data-role="collapsible" data-collapsed="true">
                     <h3>Tickets en cours</h3>
                     <p>
-                    <table><tr><th></th><th>Date</th><th>Technicien</th> <th>Délai</th><th>Produits concernés</th><th></th><th>Descrption</th><th>Attribué</th></tr>
+                    <table><tr><th></th><th>Date</th><th>Technicien</th> <th>Délai</th><th>Produits concernés</th><th></th><th>Descrption</th><th>Attribué</th></tr></table>
 
         <?php
         foreach ($the_bugs as $bug) {
@@ -24,12 +24,14 @@
                     $engineer = "non affecté";
                 }
                 if ($bug->getStatus() === "OPEN"){
-                    echo "<tr>";
+
+                    echo '<form name="assign'.$bug->getId().'" method="POST" data-ajax="false" action="index.php?uc=dash&action=assign">';
+                    echo "<table><tr>";
                     echo "<td class='colonneimg'><img src='../images/en_cours.png' width='30px' height='30px'/></td>";
                     echo "<td class='colonnedate'>".$bug->getCreated()->format('d.m.Y')."</td>";
 
                     //echo "<label for='grid-select-1' class='ui-hidden-accessible'>Technicien</label>";
-                    echo "<td class='colonneselect'><select id='grid-select-1' name='lst' data-shadow='false'>";
+                    echo "<td class='colonneselect'><select id='lst' name='lst' data-shadow='false'>";
                         foreach($the_techs as $tech){
                             echo '<option value="'.$tech->getId().'">'.$tech->getName().'</option>';
                         }
@@ -38,7 +40,8 @@
                         }
                     echo "</select></td>";
                     //echo '<input type="date" name="date" placeholder="jj-mm-aa">';
-                    echo '<td class="colonnedelai"><input type="text" data-role="date" placeholder="jj/mm/aaaa"></td>';
+                    echo '<td class="colonnedelai">
+                    <input type="date" name="date" data-role="date" placeholder="jj/mm/aaaa"></td>';
                     //echo "<li> affecté à : ".$engineer."</li>";
                     echo "<td class='colonneprod'>";
                     foreach ($bug->getProducts() as $product) {
@@ -49,8 +52,9 @@
                     //echo '<td><input type="submit" name="attribuer" value="Attribuer" ></td>';
                     echo '<td><button type="submit" name="attribuer" value="attribuer" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-plus ui-btn-icon-notext"></td>';
                     echo '<input type="hidden"  name="id" value="'.$bug->getId().'">';
+
+                    echo "</tr></table>";
                     echo '</form>';
-                    echo "</tr>";
                 }
             }
         }
@@ -66,7 +70,7 @@
     <h4>Pied de page</h4>
 </div>
 </div>
-</form>
+<!--</form>-->
 
 
 <div data-role="dialog" id="ticket_dialog">
