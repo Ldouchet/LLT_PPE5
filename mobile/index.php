@@ -18,7 +18,12 @@ switch($uc)
         include("./vues/v_connexion.php");
         break;
     }
-
+    case 'deconnexion' :
+    {
+        seDeconnecter();
+        header("Location: ./");
+        break;
+    }
     case 'connexion':
     {
         if (isset($_POST['valider'])){

@@ -8,6 +8,7 @@
             <?php
                 echo "<a href='index.php?uc=dash&action=assign' class='ui-btn ui-shadow ui-corner-all ui-icon-gear ui-btn-icon-notext ui-btn-inline'/></a>";
                 echo "<a href='index.php?uc=dash&action=delete' class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-inline'/></a>";
+                echo "<a href='index.php?uc=deconnexion' class='ui-btn ui-shadow ui-corner-all ui-icon-power ui-btn-icon-notext ui-btn-inline'/></a>";
             ?>
             <div data-role="collapsible-set" data-theme="c" data-content-theme="c">
                 <div id="liste_tickets">
