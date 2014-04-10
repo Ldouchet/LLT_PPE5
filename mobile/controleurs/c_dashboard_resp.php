@@ -6,10 +6,6 @@
  * Time: 19:10
  * To change this template use File | Settings | File Templates.
  */
-
-echo var_dump($_REQUEST);
-
-
 if(!isset($_REQUEST['action']))
     $action = 'list';
 else

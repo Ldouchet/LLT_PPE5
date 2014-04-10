@@ -1,15 +1,19 @@
 <a id='lnkDialog' href="#ticket_dialog" data-transition="flip" style='display:none;'></a>
     <div data-role="page">
         <div data-role="header">
-            <h1>En-tête</h1>
+            <?php
+            echo '<table>';
+            echo '<tr>';
+            echo "<td><a href='index.php?uc=dash&action=assign' class='ui-btn ui-corner-all ui-icon-gear ui-btn-icon-notext'/></a></td>";
+            echo "<td><a href='index.php?uc=dash&action=delete' class='ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext'/></a></td>";
+            echo "<td><a href='index.php?uc=dash' class='ui-btn ui-corner-all ui-icon-bullets ui-btn-icon-notext'/></a></td>";
+            echo "<td><a href='index.php?uc=deconnexion' class='ui-btn ui-corner-all ui-btn-icon-right ui-btn-b ui-icon-power ui-btn-icon-notext'/></a></td>";
+            echo '</table>';
+            echo '</tr>';
+            ?>
         </div>
         <div data-role="content">
-            <h4>Bienvenue sur votre console de gestion</h4>
-            <?php
-                echo "<a href='index.php?uc=dash&action=assign' class='ui-btn ui-shadow ui-corner-all ui-icon-gear ui-btn-icon-notext ui-btn-inline'/></a>";
-                echo "<a href='index.php?uc=dash&action=delete' class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-inline'/></a>";
-                echo "<a href='index.php?uc=deconnexion' class='ui-btn ui-shadow ui-corner-all ui-icon-power ui-btn-icon-notext ui-btn-inline'/></a>";
-            ?>
+            <h4>Bienvenue sur votre tableau de bord</h4>
             <div data-role="collapsible-set" data-theme="c" data-content-theme="c">
                 <div id="liste_tickets">
                     <div data-role="collapsible" data-collapsed="true">
