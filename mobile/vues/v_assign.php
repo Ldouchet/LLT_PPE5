@@ -50,7 +50,7 @@
                     echo "</td>";
                     echo "<td></td><td class='colonnedescr'>".$bug->getDescription()."</td>";
                     //echo '<td><input type="submit" name="attribuer" value="Attribuer" ></td>';
-                    echo '<td><button type="submit" name="attribuer" value="Attribuer" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-plus ui-btn-icon-notext"></td>';
+                    echo '<td><button type="submit" name="attribuer" value="attribuer" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-plus ui-btn-icon-notext"></td>';
                     echo '<input type="hidden"  name="id" value="'.$bug->getId().'">';
 
                     echo "</tr></table>";
