@@ -2,15 +2,19 @@
     <a id='lnkDialog' href="#ticket_dialog" data-transition="flip" style='display:none;'></a>
         <div data-role="page">
             <div data-role="header">
-                <h1>En-tête</h1>
+                <?php
+                echo '<table>';
+                echo '<tr>';
+                echo "<td><a href='index.php?uc=dash' class='ui-btn ui-corner-all ui-icon-bullets ui-btn-icon-notext'/></a></td>";
+                echo "<td><a href='index.php?uc=deconnexion' class='ui-btn ui-corner-all ui-btn-icon-right ui-btn-b ui-icon-power ui-btn-icon-notext'/></a></td>";
+                echo '</table>';
+                echo '</tr>';
+                ?>
             </div>
             <div data-role="content">
-                <h4>Bienvenue sur votre console de gestion</h4>
-                <?php
+                <h4>Signalement d'un nouveau bug</h4>
 
-                ?>
                     <fieldset>
-                        <legend>Signalement d'un nouveau bug</legend>
                         <p>
                             <label for="objet">Objet : </label>
                             <input id="objet" type="text" name="objet" size="50" maxlength="50">

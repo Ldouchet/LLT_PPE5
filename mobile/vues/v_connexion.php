@@ -1,6 +1,6 @@
 <div data-role="page">
     <div data-role="header">
-        <h1>En-tête</h1>
+        <h1>Bienvenue sur votre console de gestion</h1>
     </div>
     <div data-role="content">
         <h4>Authentification</h4>
