@@ -1,4 +1,4 @@
-<form name="new_bug" method="POST" action="index.php?uc=dash&action=nouveau" enctype="multipart/form-data">
+<form name="new_bug" method="POST" action="index.php?uc=dash&action=nouveau" data-ajax="false" enctype="multipart/form-data">
     <a id='lnkDialog' href="#ticket_dialog" data-transition="flip" style='display:none;'></a>
         <div data-role="page">
             <div data-role="header">
@@ -25,7 +25,6 @@
                                 <?php
                                 foreach($the_products as $p){
                                     echo '<option value="'.$p->getId().'">'.$p->getName().'</option>';
-                                    echo 'var_dump($the_products)';
                                 }
                                 ?>
                             </select>
