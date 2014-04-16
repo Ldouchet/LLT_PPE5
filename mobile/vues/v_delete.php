@@ -42,7 +42,7 @@
                                         }
                                         echo "</td>";
                                         echo "<td class='colonnedesc'>".$bug->getDescription()."</td>";
-                                        echo '<form method="POST" action="#">';
+                                        echo '<form method="POST" action="#" data-ajax="false">';
                                         //echo '<input type="submit" name="supprimer" value="Supprimer" >';
                                         echo '<td><button type="submit" name="supprimer" value="Supprimer" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext"></button></td>';
                                         echo '<input type="hidden"  name="id" value="'.$bug->getId().'">';

@@ -28,7 +28,7 @@ switch($action){
             if(!empty($files['name'])) {
             //echo var_dump($_FILES);
 
-                uploadFiles($files);
+                uploadFilesMobile($files);
             }
             //include("vues/v_message.php");
         }
