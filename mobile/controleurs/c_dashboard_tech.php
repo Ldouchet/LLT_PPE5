@@ -24,6 +24,7 @@ switch($action){
 
         }
         $bug= findBugById($_GET['id']);
+        var_dump($_GET['id']);
         include("vues/v_repare.php");
         break;
     }

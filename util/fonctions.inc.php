@@ -104,12 +104,12 @@ function getBugsOpenByUser($id){
     $retour = array($tab1, $tab2);
     return $retour;
 }
+
 function findBugById($id){
     require "bootstrap.php";
     $bug = $entityManager->find("Bug", $id);
     return $bug;
 }
-
 
 function getAllBug(){
     require "bootstrap.php";
@@ -192,7 +192,7 @@ function repareBug(){
     $resume = $_POST['resume'];
     $id = $_GET['id'];
 
-    require "bootstrap.php";        //faire un update pour passer le statut de open a close
+    require "bootstrap.php";
 
     $bug = $entityManager->find("Bug", $id);
     $bug->setdescription($resume);

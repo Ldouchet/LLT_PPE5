@@ -33,6 +33,7 @@
                     </fieldset>
         </div>
     </div>
+</form>
     <div data-role="footer" data-position="fixed">
         <h4>Pied de page</h4>
     </div>
@@ -47,4 +48,3 @@
             <div id="solution_ticket"></div>
         </div>
     </div>
-</form>
