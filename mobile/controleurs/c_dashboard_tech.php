@@ -19,12 +19,11 @@ switch($action){
         break;
     }
     case 'repare':{
-        if (isset($_POST['objet'])){
+        if (isset($_POST['valider'])){
             $message = repareBug();
-
         }
-        $bug= findBugById($_GET['id']);
-        var_dump($_GET['id']);
+
+        $bug= findBugById($_REQUEST['id']);
         include("vues/v_repare.php");
         break;
     }

@@ -17,7 +17,7 @@
                     <div data-role="collapsible" data-collapsed="true">
                         <h3>Tickets en cours</h3>
                         <p>
-                        <table><tr><th></th><th>Numéro</th><th>Date</th><th>Technicien</th><th>Produits concernés</th></tr>
+                        <table><tr><th></th><th>Date</th><th>Technicien</th><th>  </th><th>Produits concernés &nbsp;&nbsp;&nbsp; </th> <th>Description</th></tr>
                             <?php
                             foreach ($the_bugs as $bug) {
                                 if ($bug->getEngineer() != null){
@@ -30,15 +30,16 @@
                                     //echo "<li><img src='./images/en_cours.png' width='30px' height='30px'/></li>";
                                     //echo "<td><a href='index.php?uc=dash&action=repare&id=".$bug->getId()."' data-role='button' data-ajax='false'><img src='../images/en_cours.png' width='100px' height='100px'/></a></td>";
                                     echo "<td><a href='index.php?uc=dash&action=repare&id=".$bug->getId()."' class='ui-btn ui-shadow ui-corner-all ui-icon-gear ui-btn-icon-notext'/></a></td>";
-                                    echo "<td class='colonnedate'>".$bug->getCreated()->format('d.m.Y')."</td>";
-                                    echo "<td class='colonnetech'> affecté à : ".$engineer."</td>";
-                                    echo "<td class='colonneprod'> Produit(s) : ";
+                                    echo "<td>".$bug->getCreated()->format('d.m.Y')."</td>";
+                                    echo "<td>&nbsp;&nbsp;&nbsp; ".$engineer."</td>";
+                                    echo "<td>&nbsp;&nbsp;&nbsp;</td><td> ";
                                     foreach ($bug->getProducts() as $product) {
                                         echo "- ".$product->getName()." ";
                                     }
                                     echo "</td>";
                                     echo "<td>".$bug->getDescription()."</td>";
                                     echo "</tr>";
+
                                 }
                             }
                             ?>

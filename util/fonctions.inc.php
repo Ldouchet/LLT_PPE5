@@ -107,6 +107,7 @@ function getBugsOpenByUser($id){
 
 function findBugById($id){
     require "bootstrap.php";
+    var_dump($id);
     $bug = $entityManager->find("Bug", $id);
     return $bug;
 }
@@ -187,15 +188,48 @@ function ajouterNewBug($files){
     return "Le bug a été créé.";
 }
 
+function ajouterNewBugMobile($files){
+    $obj = $_POST['objet'];
+    $lib = $_POST['libelle'];
+    $apps = $_POST['apps'];
+    $lien = $files['name'];
+
+    require "bootstrap.php";
+
+    $reporter = $entityManager->find("User", $_SESSION['login']['id']);
+
+    $bug = new Bug();
+    $bug->setDescription($lib);
+    $bug->setCreated(new DateTime("now"));
+    $bug->setStatus("OPEN");
+
+    $bug->setScreen("../upload/".$lien);
+
+    foreach ($apps as $productId) {
+        $product = $entityManager->find("Product", $productId);
+        $bug->assignToProduct($product);
+    }
+
+    $bug->setReporter($reporter);
+    //$bug->setEngineer($engineer);
+
+    $entityManager->persist($bug);
+    $entityManager->flush();
+
+    return "Le bug a été créé.";
+}
+
 function repareBug(){
 
     $resume = $_POST['resume'];
-    $id = $_GET['id'];
+    $id = $_REQUEST['id'];
+    var_dump($resume);
+    var_dump($id);
 
     require "bootstrap.php";
 
     $bug = $entityManager->find("Bug", $id);
-    $bug->setdescription($resume);
+    $bug->setDescription($resume);
     $bug->close();
 
     $entityManager->flush();
@@ -307,6 +341,46 @@ function uploadFiles($files){
 
 
 }
+function uploadFilesMobile($files){
 
+
+    $dossier = '../upload/';
+    $fichier = basename($files['name']);
+    $taille_maxi = 10000000;
+    $taille = filesize($files['tmp_name']);
+    $extensions = array('.png', '.gif', '.jpg', '.jpeg');
+    $extension = strrchr($files['name'], '.');
+    //Début des vérifications de sécurité...
+    if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
+    {
+        $erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc...';
+    }
+    if($taille>$taille_maxi)
+    {
+        $erreur = 'Le fichier est trop gros...';
+    }
+    if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
+    {
+        //On formate le nom du fichier ici...
+        $fichier = strtr($fichier,
+            'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
+            'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+        $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
+        if(move_uploaded_file($files['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+        {
+            echo 'Upload effectué avec succès !';
+        }
+        else //Sinon (la fonction renvoie FALSE).
+        {
+            echo 'Echec de l\'upload !';
+        }
+    }
+    else
+    {
+        echo $erreur;
+    }
+
+
+}
 
 ?>
