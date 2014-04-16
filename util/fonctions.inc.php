@@ -170,6 +170,7 @@ function ajouterNewBug($files){
     $bug->setDescription($lib);
     $bug->setCreated(new DateTime("now"));
     $bug->setStatus("OPEN");
+
     $bug->setScreen("upload/".$lien);
 
     foreach ($apps as $productId) {

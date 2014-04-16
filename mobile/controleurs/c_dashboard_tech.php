@@ -21,6 +21,7 @@ switch($action){
     case 'repare':{
         if (isset($_POST['objet'])){
             $message = repareBug();
+
         }
         $bug= findBugById($_GET['id']);
         include("vues/v_repare.php");

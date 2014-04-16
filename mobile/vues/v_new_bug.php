@@ -1,4 +1,4 @@
-<form name="new_bug" method="POST" data-ajax="false" action="index.php?uc=dash&action=nouveau" enctype="multipart/form-data">
+<form name="new_bug" method="POST" action="index.php?uc=dash&action=nouveau" data-ajax="false" enctype="multipart/form-data">
     <a id='lnkDialog' href="#ticket_dialog" data-transition="flip" style='display:none;'></a>
         <div data-role="page">
             <div data-role="header">
@@ -41,9 +41,9 @@
                             <input type="reset" value="Annuler" name="annuler">
                         </p>
                     </fieldset>
+                </form>
             </div>
         </div>
-</form>
     <div data-role="footer" data-position="fixed">
         <h4>Pied de page</h4>
     </div>

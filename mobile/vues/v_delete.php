@@ -1,4 +1,4 @@
-<form name="delete" method="POST" action="index.php?uc=dash&action=delete">
+<form name="delete" method="POST" action="index.php?uc=dash&action=delete" data-ajax="false">
     <a id='lnkDialog' href="#ticket_dialog" data-transition="flip" style='display:none;'></a>
     <div data-role="page">
         <div data-role="header">
@@ -21,7 +21,8 @@
                     <div data-role="collapsible" data-collapsed="true">
                         <h3>Tickets en cours</h3>
                         <p>
-                        <table><tr><th></th><th>Date</th><th>Technicien</th><th>Produits concernés</th><th>Descrption</th><th>Supprimer</th></tr>
+                        <table>
+                            <tr><th></th><th>Date</th><th>Technicien</th><th>Produits concernés</th><th>Descrption</th><th>Supprimer</th></tr>
 
                             <?php
                                 foreach ($the_bugs as $bug) {
@@ -43,7 +44,7 @@
                                         echo "<td class='colonnedesc'>".$bug->getDescription()."</td>";
                                         echo '<form method="POST" action="#">';
                                         //echo '<input type="submit" name="supprimer" value="Supprimer" >';
-                                        echo '<td><button type="submit" value="Supprimer" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext"></button></td>';
+                                        echo '<td><button type="submit" name="supprimer" value="Supprimer" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext"></button></td>';
                                         echo '<input type="hidden"  name="id" value="'.$bug->getId().'">';
                                         echo '</form>';
                                         echo "</tr>";

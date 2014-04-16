@@ -20,7 +20,7 @@
     <h2>Tickets en cours</h2>
     <p>
     <table>
-        <tr><th></th></th><th>Date création</th><th>délai</th><th>Technicien</th><th>Produit concernés</th><th>Description</th></tr>
+        <tr><th></th><th>Date création</th><th>délai</th><th>Technicien</th><th>Produit concernés</th><th>Description</th></tr>
     <?php
     foreach ($the_bugs as $bug) {
         if ($bug->getStatus() == "OPEN"){
@@ -30,11 +30,13 @@
                 $engineer = "non affecté";
             }
 
-            echo "<tr></tr><td><img src='../images/en_cours.png' width='30px' height='30px'/></td>";
+            echo "<tr><td><img src='../images/en_cours.png' width='30px' height='30px'/></td>";
             echo "<td> Création: ".$bug->getCreated()->format('d.m.Y')."</td>";
 
             if ($bug->getDelai() != null){
                 echo "<td>  ".$bug->getDelai()->format('d.m.Y')."</td>";
+            }else{
+                echo "<td> pas définie </td>";
             }
 
             echo "<td> ".$engineer."</td>";

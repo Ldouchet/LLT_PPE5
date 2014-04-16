@@ -24,7 +24,13 @@ switch($action){
         if (isset($_POST['objet'])){
             $files = $_FILES['avatar'];
             $message = ajouterNewBug($files);
-            uploadFiles($files);
+            echo var_dump($files['name']);
+            if(!empty($files['name'])) {
+            //echo var_dump($_FILES);
+
+                uploadFiles($files);
+            }
+            //include("vues/v_message.php");
         }
         $the_products = getAllProducts();
         include("vues/v_new_bug.php");
