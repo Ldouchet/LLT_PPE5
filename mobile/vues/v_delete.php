@@ -1,5 +1,4 @@
-<form name="delete" method="POST" action="index.php?uc=dash&action=delete" data-ajax="false">
-    <a id='lnkDialog' href="#ticket_dialog" data-transition="flip" style='display:none;'></a>
+<a id='lnkDialog' href="#ticket_dialog" data-transition="flip" style='display:none;'></a>
     <div data-role="page">
         <div data-role="header">
             <?php
@@ -21,8 +20,7 @@
                     <div data-role="collapsible" data-collapsed="true">
                         <h3>Tickets en cours</h3>
                         <p>
-                        <table>
-                            <tr><th></th><th>Date</th><th>Technicien</th><th>Produits concernés</th><th>Descrption</th><th>Supprimer</th></tr>
+                        <table><tr><th></th><th>Date</th><th>Technicien</th><th>Produits concernés</th><th>Descrption</th><th>Supprimer</th></tr></table>
 
                             <?php
                                 foreach ($the_bugs as $bug) {
@@ -32,7 +30,8 @@
                                         $engineer = "non affecté";
                                     }
                                     if ($bug->getStatus() === "OPEN"){
-                                        echo "<tr>";
+                                        echo '<form name="delete'.$bug->getId().'" method="POST" data-ajax="false" action="index.php?uc=dash&action=delete">';
+                                        echo "<table><tr>";
                                         echo "<td class='colonneimg'><img src='../images/en_cours.png' width='30px' height='30px'/></td>";
                                         echo "<td class='colonnedate'>".$bug->getCreated()->format('d.m.Y')."</td>";
                                         echo "<td class='colonnetech'> affecté à : ".$engineer."</td>";
@@ -42,12 +41,10 @@
                                         }
                                         echo "</td>";
                                         echo "<td class='colonnedesc'>".$bug->getDescription()."</td>";
-                                        echo '<form method="POST" action="#">';
                                         //echo '<input type="submit" name="supprimer" value="Supprimer" >';
                                         echo '<td><button type="submit" name="supprimer" value="Supprimer" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext"></button></td>';
                                         echo '<input type="hidden"  name="id" value="'.$bug->getId().'">';
-                                        echo '</form>';
-                                        echo "</tr>";
+                                        echo "</tr></table>";
                                     }
                                 }
                             ?>
@@ -60,8 +57,6 @@
             <h4>Pied de page</h4>
         </div>
     </div>
-</form>
-
 
 <div data-role="dialog" id="ticket_dialog">
     <div data-role="header">
