@@ -1,4 +1,4 @@
-<a id='lnkDialog' href="#ticket_dialog" data-transition="flip" style='display:none;'></a>
+<a id='lnkDialog' href="#ticket_dialog" data-ajax="false" data-transition="flip" style='display:none;'></a>
     <div data-role="page">
         <div data-role="header">
             <?php
@@ -44,7 +44,7 @@
                                         //echo '<input type="submit" name="supprimer" value="Supprimer" >';
                                         echo '<td><button type="submit" name="supprimer" value="Supprimer" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-icon-notext"></button></td>';
                                         echo '<input type="hidden"  name="id" value="'.$bug->getId().'">';
-                                        echo "</tr></table>";
+                                        echo "</tr></table></form>";
                                     }
                                 }
                             ?>

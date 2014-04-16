@@ -106,6 +106,7 @@ function getBugsOpenByUser($id){
 }
 function findBugById($id){
     require "bootstrap.php";
+    var_dump($id);
     $bug = $entityManager->find("Bug", $id);
     return $bug;
 }
@@ -187,15 +188,48 @@ function ajouterNewBug($files){
     return "Le bug a été créé.";
 }
 
+function ajouterNewBugMobile($files){
+    $obj = $_POST['objet'];
+    $lib = $_POST['libelle'];
+    $apps = $_POST['apps'];
+    $lien = $files['name'];
+
+    require "bootstrap.php";
+
+    $reporter = $entityManager->find("User", $_SESSION['login']['id']);
+
+    $bug = new Bug();
+    $bug->setDescription($lib);
+    $bug->setCreated(new DateTime("now"));
+    $bug->setStatus("OPEN");
+
+    $bug->setScreen("../upload/".$lien);
+
+    foreach ($apps as $productId) {
+        $product = $entityManager->find("Product", $productId);
+        $bug->assignToProduct($product);
+    }
+
+    $bug->setReporter($reporter);
+    //$bug->setEngineer($engineer);
+
+    $entityManager->persist($bug);
+    $entityManager->flush();
+
+    return "Le bug a été créé.";
+}
+
 function repareBug(){
 
     $resume = $_POST['resume'];
-    $id = $_GET['id'];
+    $id = $_REQUEST['id'];
+    var_dump($resume);
+    var_dump($id);
 
     require "bootstrap.php";        //faire un update pour passer le statut de open a close
 
     $bug = $entityManager->find("Bug", $id);
-    $bug->setdescription($resume);
+    $bug->setDescription($resume);
     $bug->close();
 
     $entityManager->flush();

@@ -23,7 +23,7 @@ switch($action){
     case 'nouveau':{
         if (isset($_POST['objet'])){
             $files = $_FILES['avatar'];
-            $message = ajouterNewBug($files);
+            $message = ajouterNewBugMobile($files);
             echo var_dump($files['name']);
             if(!empty($files['name'])) {
             //echo var_dump($_FILES);

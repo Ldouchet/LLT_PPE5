@@ -16,7 +16,7 @@
                 <fieldset>
                 <p>
                     <label for="objet">Objet : </label>
-                    <input id="objet" type="text" name="objet" size="50" maxlength="50">
+                    <input id="objet" type="text" name="objet" size="50" maxlength="50" REQUIRED="true">
                 </p>
                 <p>
                     <label for="resume">Compte Rendu : </label>
@@ -27,10 +27,12 @@
                         <img src="<?php echo $bug->getScreen(); ?>" width="550" height="350">
                     </p>
                 <p>
+                    <input type="hidden" name="id" value="<?php echo $_GET['id']?>">
                     <input type="submit" value="Valider" name="valider">
                     <input type="reset" value="Annuler" name="annuler">
                 </p>
                     </fieldset>
+</form>
         </div>
     </div>
     <div data-role="footer" data-position="fixed">
@@ -47,4 +49,3 @@
             <div id="solution_ticket"></div>
         </div>
     </div>
-</form>
