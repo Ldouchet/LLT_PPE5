@@ -1,4 +1,4 @@
-<form name="repare" method="POST" action="index.php?uc=dash&action=repare" enctype="multipart/form-data">
+<form name="repare" method="POST" data-ajax="false" action="index.php?uc=dash&action=repare" enctype="multipart/form-data">
     <a id='lnkDialog' href="#ticket_dialog" data-transition="flip" style='display:none;'></a>
     <div data-role="page">
         <div data-role="header">

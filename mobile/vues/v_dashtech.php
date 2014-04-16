@@ -13,7 +13,7 @@
         <div data-role="content">
             <h4>Bienvenue sur votre tableau de bord</h4>
             <div data-role="collapsible-set" data-theme="c" data-content-theme="c">
-                <div id="liste_tickets">
+                <div id="liste_tickets_tech">
                     <div data-role="collapsible" data-collapsed="true">
                         <h3>Tickets en cours</h3>
                         <p>

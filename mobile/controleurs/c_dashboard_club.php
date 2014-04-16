@@ -25,7 +25,6 @@ switch($action){
             $files = $_FILES['avatar'];
             $message = ajouterNewBug($files);
             uploadFiles($files);
-            include("vues/v_message.php");
         }
         $the_products = getAllProducts();
         include("vues/v_new_bug.php");
