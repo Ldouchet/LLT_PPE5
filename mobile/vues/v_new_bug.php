@@ -41,6 +41,7 @@
                             <input type="reset" value="Annuler" name="annuler">
                         </p>
                     </fieldset>
+                </form>
             </div>
         </div>
     <div data-role="footer" data-position="fixed">
@@ -57,4 +58,3 @@
             <div id="solution_ticket"></div>
         </div>
     </div>
-</form>

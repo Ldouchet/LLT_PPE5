@@ -1,4 +1,4 @@
-<form name="delete" method="POST" action="index.php?uc=dash&action=delete">
+<form name="delete" method="POST" action="index.php?uc=dash&action=delete" data-ajax="false">
     <a id='lnkDialog' href="#ticket_dialog" data-transition="flip" style='display:none;'></a>
     <div data-role="page">
         <div data-role="header">
@@ -21,7 +21,8 @@
                     <div data-role="collapsible" data-collapsed="true">
                         <h3>Tickets en cours</h3>
                         <p>
-                        <table><tr><th></th><th>Date</th><th>Technicien</th><th>Produits concernés</th><th>Descrption</th><th>Supprimer</th></tr>
+                        <table>
+                            <tr><th></th><th>Date</th><th>Technicien</th><th>Produits concernés</th><th>Descrption</th><th>Supprimer</th></tr>
 
                             <?php
                                 foreach ($the_bugs as $bug) {
