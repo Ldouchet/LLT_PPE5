@@ -1,5 +1,4 @@
-<form name="repare" method="POST" data-ajax="false" action="index.php?uc=dash&action=repare" enctype="multipart/form-data">
-    <a id='lnkDialog' href="#ticket_dialog" data-transition="flip" style='display:none;'></a>
+<a id='lnkDialog' href="#ticket_dialog" data-transition="flip" style='display:none;'></a>
     <div data-role="page">
         <div data-role="header">
             <?php
@@ -13,26 +12,27 @@
         </div>
         <div data-role="content">
             <h4>Reparation d'un bug</h4>
+            <form name="repare" method="POST" data-ajax="false" action="index.php?uc=dash&action=repare" enctype="multipart/form-data">
                 <fieldset>
                 <p>
                     <label for="objet">Objet : </label>
                     <input id="objet" type="text" name="objet" size="50" maxlength="50" REQUIRED="true">
                 </p>
                 <p>
-                    <label for="resume">Compte Rendu : </label>
-                    <textarea id="resume" name="resume" size="500" maxlength="500"></textarea>
+                    <label for="description">Compte Rendu : </label>
+                    <textarea id="description" name="description" size="500" maxlength="500"></textarea>
                 </p>
                     <p>
                         <label for="image">Screen : </label>
                         <img src="<?php echo $bug->getScreen(); ?>" width="550" height="350">
                     </p>
                 <p>
-                    <input type="hidden" name="id" value="<?php echo $_GET['id']?>">
+                    <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
                     <input type="submit" value="Valider" name="valider">
                     <input type="reset" value="Annuler" name="annuler">
                 </p>
                     </fieldset>
-</form>
+            </form>
         </div>
     </div>
     <div data-role="footer" data-position="fixed">

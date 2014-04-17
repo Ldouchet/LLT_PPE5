@@ -50,7 +50,7 @@
                     echo "</select></td>";
                     //echo '<input type="date" name="date" placeholder="jj-mm-aa">';
                     echo '<td class="colonnedelai">
-                    <input type="date" name="date" data-role="date" placeholder="jj/mm/aaaa"></td>';
+                    <input type="text" name="date" data-role="date" placeholder="jj/mm/aaaa"></td>';
                     //echo "<li> affecté à : ".$engineer."</li>";
                     echo "<td class='colonneprod'>";
                     foreach ($bug->getProducts() as $product) {

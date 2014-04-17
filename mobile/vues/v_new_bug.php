@@ -1,5 +1,4 @@
-<form name="new_bug" method="POST" action="index.php?uc=dash&action=nouveau" data-ajax="false" enctype="multipart/form-data">
-    <a id='lnkDialog' href="#ticket_dialog" data-transition="flip" style='display:none;'></a>
+<a id='lnkDialog' href="#ticket_dialog" data-transition="flip" style='display:none;'></a>
         <div data-role="page">
             <div data-role="header">
                 <?php
@@ -13,7 +12,7 @@
             </div>
             <div data-role="content">
                 <h4>Signalement d'un nouveau bug</h4>
-
+                <form name="new_bug" method="POST" action="index.php?uc=dash&action=nouveau" data-ajax="false" enctype="multipart/form-data">
                     <fieldset>
                         <p>
                             <label for="objet">Objet : </label>

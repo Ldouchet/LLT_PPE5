@@ -107,7 +107,6 @@ function getBugsOpenByUser($id){
 
 function findBugById($id){
     require "bootstrap.php";
-    var_dump($id);
     $bug = $entityManager->find("Bug", $id);
     return $bug;
 }
@@ -220,12 +219,14 @@ function ajouterNewBugMobile($files){
 }
 
 function repareBug(){
-
-    $resume = $_POST['resume'];
-    $id = $_REQUEST['id'];
+    /*var_dump($_POST['description']);
+    var_dump($_POST['id']);
+    exit;*/
+    $resume = $_POST['description'];
+    $id = $_POST['id'];
+    /*var_dump($id);
     var_dump($resume);
-    var_dump($id);
-
+    exit;*/
     require "bootstrap.php";
 
     $bug = $entityManager->find("Bug", $id);
