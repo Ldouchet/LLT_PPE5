@@ -15,11 +15,20 @@
     <div data-role="content">
         <h4>Bienvenue sur votre tableau de bord</h4>
         <div data-role="collapsible-set" data-theme="c" data-content-theme="c">
-            <div id="liste_tickets">
+            <div id="liste_tickets_club">
             <div data-role="collapsible" data-collapsed="true">
                 <h3>Tickets en cours</h3>
                 <p>
-                <table><tr><th></th><th>Date</th><th>Technicien</th><th>Produit concernés</th></tr>
+                <table data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke" data-column-btn-text="Colonnes">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th data-priority="1">Date Création</th>
+                        <th data-priority="2">Technicien</th>
+                        <th data-priority="3">Produits concernés</th>
+                        <th data-priority="4">Titre</th>
+                    </tr>
+                    </thead>
                 <?php
                     foreach ($bugs_en_cours as $bug) {
                         if ($bug->getEngineer() != null){
@@ -33,11 +42,11 @@
                         echo "<td>".$engineer."</td>";
                         echo "<td>";
                         foreach ($bug->getProducts() as $product) {
-                            echo "- ".$product->getName()." ";
+                            echo $product->getName();
                         }
                         echo "</td>";
+                        echo "<td>".$bug->getResume()."</td></tr>";
                         echo "</tr>";
-
 
                     }
                     ?>
@@ -49,7 +58,17 @@
             <div data-role="collapsible">
                 <h3>Tickets cloturés</h3>
                 <p>
-                <table><tr><th></th><th>Date</th><th>Technicien</th><th>Produits concernés</th></tr>
+                <table data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke" data-column-btn-text="Colonnes">
+                    <thead>
+                        <tr>
+                            <th></th>
+                                <th data-priority="1">Date Création</th>
+                                <th data-priority="2">Technicien</th>
+                                <th data-priority="3">Produits concernés</th>
+                                <th data-priority="4">Titre</th>
+                                <th data-priority="5">Voir</th>
+                        </tr>
+                    </thead>
                     <?php
                     foreach ($bugs_fermes as $bug) {
                         if ($bug->getEngineer() != null){
@@ -63,10 +82,11 @@
                         echo "<td class='colonnetech'>".$engineer."</td>";
                         echo "<td class='colonneprod'>";
                         foreach ($bug->getProducts() as $product) {
-                            echo "- ".$product->getName()." ";
+                            echo $product->getName();
                         }
                         echo "</td>";
-                        //echo "<td>".$bug->getDescription()."</td>";
+                        echo "<td>".$bug->getResume()."</td>";
+                        echo "<td><a href='index.php?uc=dash&action=watch&id=".$bug->getId()."' class='ui-btn ui-shadow ui-corner-all ui-icon-eye ui-btn-icon-notext'/></a></td>";
                         echo "</tr>";
                     }
                     ?>

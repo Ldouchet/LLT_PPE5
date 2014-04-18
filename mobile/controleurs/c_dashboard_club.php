@@ -23,7 +23,7 @@ switch($action){
     case 'nouveau':{
         if (isset($_POST['objet'])){
             $files = $_FILES['avatar'];
-            $message = ajouterNewBugMobile($files);
+            $message = ajouterNewBug($files);
             echo var_dump($files['name']);
             if(!empty($files['name'])) {
             //echo var_dump($_FILES);
@@ -35,6 +35,11 @@ switch($action){
         $the_products = getAllProducts();
         include("vues/v_new_bug.php");
         break;
+    }
+    case 'watch':{
+       $the_bugs = findBugById($_GET['id']);
+       include("vues/v_watch.php");
+       break;
     }
 }
 

@@ -20,7 +20,7 @@
                     <div data-role="collapsible" data-collapsed="true">
                         <h3>Tickets en cours</h3>
                         <p>
-                        <table><tr><th></th><th>Date</th><th>Technicien</th><th>Produits concernés</th><th>Descrption</th><th>Supprimer</th></tr></table>
+                        <table><tr><th></th><th>Date</th><th>Technicien</th><th>Produits concernés</th><th>Description</th><th>Supprimer</th></tr></table>
 
                             <?php
                                 foreach ($the_bugs as $bug) {

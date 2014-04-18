@@ -19,8 +19,18 @@
                     <div data-role="collapsible" data-collapsed="true">
     <h2>Tickets en cours</h2>
     <p>
-    <table>
-        <tr><th></th><th>Date création</th><th>délai</th><th>Technicien</th><th>Produit concernés</th><th>Description</th></tr>
+        <!--<table><tr><th></th><th>Date création</th><th>Délai</th><th>Technicien</th><th>Produit concernés</th><th>Titre</th></tr>-->
+    <table data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke" data-column-btn-text="Colonnes">
+        <thead>
+            <tr>
+                <th></th>
+                    <th data-priority="1">Date Création</th>
+                    <th data-priority="2">Délai</th>
+                    <th data-priority="3">Technicien</th>
+                    <th data-priority="4">Produits concernés</th>
+                    <th data-priority="5">Titre</th>
+            </tr>
+        </thead>
     <?php
     foreach ($the_bugs as $bug) {
         if ($bug->getStatus() == "OPEN"){
@@ -31,12 +41,12 @@
             }
 
             echo "<tr><td><img src='../images/en_cours.png' width='30px' height='30px'/></td>";
-            echo "<td> Création: ".$bug->getCreated()->format('d.m.Y')."</td>";
+            echo "<td>".$bug->getCreated()->format('d.m.Y')."</td>";
 
             if ($bug->getDelai() != null){
                 echo "<td>  ".$bug->getDelai()->format('d.m.Y')."</td>";
             }else{
-                echo "<td> pas définie </td>";
+                echo "<td> Pas Définie </td>";
             }
 
             echo "<td> ".$engineer."</td>";
@@ -44,7 +54,7 @@
             foreach ($bug->getProducts() as $product) {
                 echo " ".$product->getName()." "."</td>";
             }
-            echo "<td>".$bug->getDescription()."</td></tr>";
+            echo "<td>".$bug->getResume()."</td></tr>";
         }
     }
     ?>
@@ -56,7 +66,17 @@
     <div data-role="collapsible">
     <h2>Tickets fermés</h2>
         <p>
-        <table><tr><th></th><th>Numéro</th><th>Date</th><th>Technicien</th><th>Produits concernés</th></tr>
+            <!--<table><tr><th></th><th>Date Création</th><th>Technicien</th><th>Produits concernés</th><th>Titre</th></tr>-->
+        <table data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke" data-column-btn-text="Colonnes">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th data-priority="1">Date Création</th>
+                    <th data-priority="2">Technicien</th>
+                    <th data-priority="3">Produits concernés</th>
+                    <th data-priority="4">Titre</th>
+                </tr>
+            </thead>
     <?php
     foreach ($the_bugs as $bug) {
         if ($bug->getStatus() == "CLOSE"){
@@ -71,10 +91,10 @@
             echo "<td class='colonnetech'> affecté à : ".$engineer."</td>";
             echo "<td> Produit(s) : ";
             foreach ($bug->getProducts() as $product) {
-                echo "- ".$product->getName()." ";
+                echo $product->getName();
             }
             echo "</td>";
-            echo "<td class='colonnedescrip'>".$bug->getDescription()."</td>";
+            echo "<td class='colonnedescrip'>".$bug->getResume()."</td>";
             echo "</tr>";
         }
     }
@@ -82,7 +102,6 @@
 
             </table>
         </p>
-
 </div>
                 </div>
             </div>

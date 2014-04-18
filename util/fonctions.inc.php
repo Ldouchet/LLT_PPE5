@@ -168,6 +168,7 @@ function ajouterNewBug($files){
 
     $bug = new Bug();
     $bug->setDescription($lib);
+    $bug->setResume($obj);
     $bug->setCreated(new DateTime("now"));
     $bug->setStatus("OPEN");
 
@@ -187,46 +188,17 @@ function ajouterNewBug($files){
     return "Le bug a été créé.";
 }
 
-function ajouterNewBugMobile($files){
-    $obj = $_POST['objet'];
-    $lib = $_POST['libelle'];
-    $apps = $_POST['apps'];
-    $lien = $files['name'];
-
-    require "bootstrap.php";
-
-    $reporter = $entityManager->find("User", $_SESSION['login']['id']);
-
-    $bug = new Bug();
-    $bug->setDescription($lib);
-    $bug->setCreated(new DateTime("now"));
-    $bug->setStatus("OPEN");
-
-    $bug->setScreen("../upload/".$lien);
-
-    foreach ($apps as $productId) {
-        $product = $entityManager->find("Product", $productId);
-        $bug->assignToProduct($product);
-    }
-
-    $bug->setReporter($reporter);
-    //$bug->setEngineer($engineer);
-
-    $entityManager->persist($bug);
-    $entityManager->flush();
-
-    return "Le bug a été créé.";
-}
-
 function repareBug(){
 
     $resume = $_POST['description'];
+    $obj = $_POST['objet'];
     $id = $_POST['id'];
 
     require "bootstrap.php";
 
     $bug = $entityManager->find("Bug", $id);
     $bug->setDescription($resume);
+    $bug->setResume($obj);
     $bug->close();
 
     $entityManager->flush();

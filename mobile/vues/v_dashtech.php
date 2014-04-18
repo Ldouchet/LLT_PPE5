@@ -17,7 +17,17 @@
                     <div data-role="collapsible" data-collapsed="true">
                         <h3>Tickets en cours</h3>
                         <p>
-                        <table><tr><th></th><th>Date</th><th>Technicien</th><th>  </th><th>Produits concernés &nbsp;&nbsp;&nbsp; </th> <th>Description</th></tr>
+                            <!--<table><tr><th></th><th>Date</th><th>Technicien</th><th>  </th><th>Produits concernés &nbsp;&nbsp;&nbsp; </th> <th>Description</th></tr>-->
+                            <table data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke" data-column-btn-text="Colonnes">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th data-priority="1">Date</th>
+                                    <th data-priority="2">Technicien</th>
+                                    <th data-priority="3">Produits concernés</th>
+                                    <th data-priority="4">Titre</th>
+                                </tr>
+                            </thead>
                             <?php
                             foreach ($the_bugs as $bug) {
                                 if ($bug->getEngineer() != null){
@@ -31,13 +41,13 @@
                                     //echo "<td><a href='index.php?uc=dash&action=repare&id=".$bug->getId()."' data-role='button' data-ajax='false'><img src='../images/en_cours.png' width='100px' height='100px'/></a></td>";
                                     echo "<td><a href='index.php?uc=dash&action=repare&id=".$bug->getId()."' class='ui-btn ui-shadow ui-corner-all ui-icon-gear ui-btn-icon-notext'/></a></td>";
                                     echo "<td>".$bug->getCreated()->format('d.m.Y')."</td>";
-                                    echo "<td>&nbsp;&nbsp;&nbsp; ".$engineer."</td>";
-                                    echo "<td>&nbsp;&nbsp;&nbsp;</td><td> ";
+                                    echo "<td>".$engineer."</td>";
+                                    echo "<td>";
                                     foreach ($bug->getProducts() as $product) {
-                                        echo "- ".$product->getName()." ";
+                                        echo $product->getName();
                                     }
                                     echo "</td>";
-                                    echo "<td>".$bug->getDescription()."</td>";
+                                    echo "<td>".$bug->getResume()."</td>";
                                     echo "</tr>";
 
                                 }
