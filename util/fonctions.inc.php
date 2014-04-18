@@ -219,14 +219,10 @@ function ajouterNewBugMobile($files){
 }
 
 function repareBug(){
-    /*var_dump($_POST['description']);
-    var_dump($_POST['id']);
-    exit;*/
+
     $resume = $_POST['description'];
     $id = $_POST['id'];
-    /*var_dump($id);
-    var_dump($resume);
-    exit;*/
+
     require "bootstrap.php";
 
     $bug = $entityManager->find("Bug", $id);

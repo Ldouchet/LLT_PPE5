@@ -19,14 +19,17 @@ switch($action){
         break;
     }
     case 'repare':{
-       /*var_dump($_GET['id']);
-       exit;*/
+
         if (isset($_POST['valider'])){
+
             $message = repareBug();
+            $bug= findBugById($_POST['id']);
+            header("Location:index.php?uc=dash");
+
+        }else{
+
+            $bug= findBugById($_GET['id']);
         }
-        $bug= findBugById($_GET['id']);
-        /*var_dump($bug);
-        exit;*/
         include("vues/v_repare.php");
         break;
     }
